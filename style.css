@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #111;
+  padding: 20px;
+  line-height: 1.4;
+}
+
+/* --- HEADER --- */
+.top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  gap: 15px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  min-width: 250px;
+}
+
+.search-icon {
+  font-size: 1.2rem;
+  margin-right: 8px;
+  color: #888;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-family: inherit;
+  width: 100%;
+  color: #333;
+}
+
+.view-toggle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #999;
+}
+
+.view-toggle .active {
+  color: #e85d3a; /* Naranja del diseño */
+}
+
+.view-toggle span {
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #555;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+/* Colores de leyenda */
+.dot.tesis { background: #e85d3a; }
+.dot.aleman { background: #f5a623; }
+.dot.delegar { background: #9b59b6; }
+.dot.descanso { background: #2ecc71; }
+.dot.libre { background: #95a5a6; }
+
+/* --- WEEK HEADER --- */
+.week-header {
+  margin-bottom: 30px;
+}
+
+.week-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #111;
+}
+
+.week-header p {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* --- GRID LAYOUT --- */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.grid-container.weekend {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.day-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.day-header {
+  border-bottom: 2px solid #111;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.day-header h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.day-header span {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* --- TARJETAS DE ACTIVIDAD --- */
+.card {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 12px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  border-left: 4px solid #ccc; /* Color por defecto */
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+.card .time {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #888;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card .time::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.card .label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #111;
+}
+
+/* Colores por tipo */
+.card.tesis { border-left-color: #e85d3a; }
+.card.tesis .time::before { background: #e85d3a; }
+
+.card.aleman { border-left-color: #f5a623; }
+.card.aleman .time::before { background: #f5a623; }
+
+.card.delegar { border-left-color: #9b59b6; }
+.card.delegar .time::before { background: #9b59b6; }
+
+.card.descanso { border-left-color: #2ecc71; }
+.card.descanso .time::before { background: #2ecc71; }
+
+.card.libre { border-left-color: #95a5a6; }
+.card.libre .time::before { background: #95a5a6; }
+
+.card.rutina { border-left-color: #607d8b; }
+.card.rutina .time::before { background: #607d8b; }
+
+/* Estado completado */
+.card.completed {
+  opacity: 0.5;
+  background: #f9f9f9;
+  border-left-color: #2ecc71;
+}
+
+.card.completed .label {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.card.completed::after {
+  content: '✓';
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  color: #2ecc71;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* --- BOTÓN FLOTANTE --- */
+.progress-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #111;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  z-index: 100;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-container.weekend {
+    grid-template-columns: 1fr;
+  }
+  .week-header h1 {
+    font-size: 2rem;
+  }
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
