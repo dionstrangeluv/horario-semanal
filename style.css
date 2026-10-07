@@ -57,7 +57,7 @@ body {
 }
 
 .view-toggle .active {
-  color: #e85d3a; /* Naranja del diseño */
+  color: #e85d3a;
 }
 
 .view-toggle span {
@@ -83,12 +83,13 @@ body {
   margin-right: 4px;
 }
 
-/* Colores de leyenda */
 .dot.tesis { background: #e85d3a; }
 .dot.aleman { background: #f5a623; }
 .dot.delegar { background: #9b59b6; }
 .dot.descanso { background: #2ecc71; }
 .dot.libre { background: #95a5a6; }
+.dot.ejercicio { background: #3498db; }
+.dot.aseo { background: #e67e22; }
 
 /* --- WEEK HEADER --- */
 .week-header {
@@ -107,12 +108,34 @@ body {
   color: #888;
 }
 
+.countdown {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: linear-gradient(90deg, #e85d3a, #f5a623);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  display: inline-block;
+  box-shadow: 0 2px 8px rgba(232, 93, 58, 0.3);
+}
+
+.countdown strong {
+  font-size: 1.1rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 40px 0 20px;
+  color: #111;
+}
+
 /* --- GRID LAYOUT --- */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 15px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .grid-container.weekend {
@@ -122,23 +145,23 @@ body {
 .day-column {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .day-header {
   border-bottom: 2px solid #111;
   padding-bottom: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .day-header h2 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .day-header span {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #888;
 }
 
@@ -146,13 +169,13 @@ body {
 .card {
   border: 1px solid #eee;
   border-radius: 4px;
-  padding: 12px;
+  padding: 10px 12px;
   background: #fff;
   cursor: pointer;
   transition: all 0.2s ease;
   position: relative;
-  border-left: 4px solid #ccc; /* Color por defecto */
-  min-height: 60px;
+  border-left: 4px solid #ccc;
+  min-height: 55px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -164,10 +187,10 @@ body {
 }
 
 .card .time {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: #888;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -176,14 +199,14 @@ body {
 .card .time::before {
   content: '';
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #ccc;
 }
 
 .card .label {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: #111;
 }
@@ -207,6 +230,12 @@ body {
 .card.rutina { border-left-color: #607d8b; }
 .card.rutina .time::before { background: #607d8b; }
 
+.card.ejercicio { border-left-color: #3498db; }
+.card.ejercicio .time::before { background: #3498db; }
+
+.card.aseo { border-left-color: #e67e22; }
+.card.aseo .time::before { background: #e67e22; }
+
 /* Estado completado */
 .card.completed {
   opacity: 0.5;
@@ -222,11 +251,11 @@ body {
 .card.completed::after {
   content: '✓';
   position: absolute;
-  top: 8px;
-  right: 10px;
+  top: 6px;
+  right: 8px;
   color: #2ecc71;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 /* --- BOTÓN FLOTANTE --- */
@@ -245,7 +274,7 @@ body {
 }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .grid-container {
     grid-template-columns: repeat(3, 1fr);
   }
