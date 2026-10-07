@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horario Semanal - Tesis + Alemán</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="SEARCH" class="search-input">
+    </div>
+    <div class="view-toggle">
+      <span class="active">☰ GRID</span>
+      <span>☰ LIST</span>
+    </div>
+    <div class="legend">
+      <span class="dot tesis"></span> TESIS
+      <span class="dot aleman"></span> ALEMÁN
+      <span class="dot delegar"></span> DELEGAR
+      <span class="dot descanso"></span> DESCANSO
+      <span class="dot libre"></span> LIBRE
+    </div>
+  </header>
+
+  <main>
+    <div class="week-header">
+      <h1>WEEK 1</h1>
+      <p>7 - 13 de octubre</p>
+    </div>
+
+    <!-- Lunes a Viernes -->
+    <div class="grid-container" id="weekdayGrid">
+      <!-- Se llena con JS -->
+    </div>
+
+    <!-- Sábado y Domingo -->
+    <h2 class="section-title">Fin de semana</h2>
+    <div class="grid-container weekend" id="weekendGrid">
+      <!-- Se llena con JS -->
+    </div>
+  </main>
+
+  <!-- Botón flotante de progreso -->
+  <div class="progress-float" id="progressFloat">
+    <span id="progressText">0%</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
