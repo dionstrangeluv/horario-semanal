@@ -64,20 +64,30 @@ const sundayData = [
 
 // ==================== FUNCIONES ====================
 
-const days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+// Nombres de los días y sus fechas (semana del 5 al 11 de octubre)
+const diasSemana = [
+  { dia: 'Lunes', fecha: '5 OCT' },
+  { dia: 'Martes', fecha: '6 OCT' },
+  { dia: 'Miércoles', fecha: '7 OCT' },
+  { dia: 'Jueves', fecha: '8 OCT' },
+  { dia: 'Viernes', fecha: '9 OCT' },
+  { dia: 'Sábado', fecha: '10 OCT' },
+  { dia: 'Domingo', fecha: '11 OCT' }
+];
 
 // Renderizar Lunes a Viernes
 function renderWeekday() {
   const container = document.getElementById('weekdayGrid');
   container.innerHTML = '';
 
-  days.forEach((day, dayIndex) => {
+  // Tomar solo Lunes a Viernes (índices 0 a 4)
+  diasSemana.slice(0, 5).forEach((diaInfo, dayIndex) => {
     const column = document.createElement('div');
     column.className = 'day-column';
 
     const header = document.createElement('div');
     header.className = 'day-header';
-    header.innerHTML = `<h2>${day}</h2><span>${7 + dayIndex} OCT</span>`;
+    header.innerHTML = `<h2>${diaInfo.dia}</h2><span>${diaInfo.fecha}</span>`;
     column.appendChild(header);
 
     weekdayData.forEach((item, itemIndex) => {
@@ -101,18 +111,19 @@ function renderWeekend() {
   const container = document.getElementById('weekendGrid');
   container.innerHTML = '';
 
-  const weekendDays = [
-    { key: 'sabado', name: 'Sábado', date: '12 OCT', data: saturdayData },
-    { key: 'domingo', name: 'Domingo', date: '13 OCT', data: sundayData }
+  // Sábado (índice 5) y Domingo (índice 6)
+  const finDeSemana = [
+    { info: diasSemana[5], data: saturdayData },
+    { info: diasSemana[6], data: sundayData }
   ];
 
-  weekendDays.forEach((day, dayIndex) => {
+  finDeSemana.forEach((day, dayIndex) => {
     const column = document.createElement('div');
     column.className = 'day-column';
 
     const header = document.createElement('div');
     header.className = 'day-header';
-    header.innerHTML = `<h2>${day.name}</h2><span>${day.date}</span>`;
+    header.innerHTML = `<h2>${day.info.dia}</h2><span>${day.info.fecha}</span>`;
     column.appendChild(header);
 
     day.data.forEach((item, itemIndex) => {
@@ -138,7 +149,7 @@ function toggleComplete(card) {
   updateProgress();
 }
 
-// Guardar estado
+// Guardar estado en localStorage
 function saveState() {
   const state = {};
   document.querySelectorAll('.card.completed').forEach(card => {
@@ -147,7 +158,7 @@ function saveState() {
   localStorage.setItem('horarioTesisGrid', JSON.stringify(state));
 }
 
-// Cargar estado
+// Cargar estado desde localStorage
 function loadState() {
   const state = JSON.parse(localStorage.getItem('horarioTesisGrid') || '{}');
   document.querySelectorAll('.card').forEach(card => {
@@ -158,7 +169,7 @@ function loadState() {
   updateProgress();
 }
 
-// Actualizar progreso
+// Actualizar barra de progreso flotante
 function updateProgress() {
   const allCards = document.querySelectorAll('.card');
   const completedCards = document.querySelectorAll('.card.completed');
@@ -170,9 +181,11 @@ function updateProgress() {
 // Cuenta regresiva al 22 de octubre
 function updateCountdown() {
   const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
   const entrega = new Date(hoy.getFullYear(), 9, 22); // Mes 9 = octubre
   const diff = Math.ceil((entrega - hoy) / (1000 * 60 * 60 * 24));
   const countdownEl = document.getElementById('countdown');
+  
   if (diff > 0) {
     countdownEl.innerHTML = `⏳ Faltan <strong>${diff}</strong> días para la entrega: 22 de octubre`;
   } else if (diff === 0) {
@@ -182,7 +195,8 @@ function updateCountdown() {
   }
 }
 
-// Inicializar
+// ==================== INICIALIZAR ====================
+
 renderWeekday();
 renderWeekend();
 loadState();
